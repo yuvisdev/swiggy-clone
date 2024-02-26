@@ -59,13 +59,19 @@
 
 PAGE LOAD -> RENDER asap -> API CALL -> RE-RENDER APP W/ DATA
 
+23. there are 2 types of routing=>
+    1.client side routing => react ( all code already present when we load it ,it just load this time)
+    2.server side routing => html js vanilla (you make a call and page is coming from server )
+
 ### HOOKS 🪝 : A NORMAL JS utility FUNCTION
 
 - Note : When you want to make your DataLayer and UiLayer sync with each other we have to make a normal js Variable to STATE varibale ( a normal js variable on steriods ), by using HOOKS ( a normal js function )
 
 1. useState() -> It is uused to generate superpowerful variables ( Local state varibale )
    let a; -> normal varibale
-   let [currentState, updatedState] = useState(default_value); -> useState() returns array and we destruct it write from start, as soon as state change react re-renders the whole componenet not just that particular thing.
+   let [currentState, updatedState] = useState(default_value); -> useState() returns array and we destruct it write from start, as soon as state variable updates react re-renders the whole componenet not just that particular thing.
+
+- AS SOON AS DATA DIFFERS IT WILL RE-RENDER THE UI bcos of this state variable
 
 2. useEffect() : useEffect(callbackFunction, dependencyArray) -> when component will be rendered than this cb will be called , it is mainly used to re-render the componenet with the fetched data
 
@@ -87,8 +93,4 @@ PAGE LOAD -> RENDER asap -> API CALL -> RE-RENDER APP W/ DATA
 
 - due to many dependencies comes with it -> parcel, babel
 - its best in DOM manipulation ( faster )
--
-
-11. there are 2 types of routing=>
-    1.client side routing => react ( all code already present when we load it ,it just load this time)
-    2.server side routing => html js vanilla (you make a call and page is coming from server )
+- Reconsiliation ( react fibre ), diff algo.
