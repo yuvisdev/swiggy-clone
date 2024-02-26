@@ -1,0 +1,34 @@
+{
+  "name": "swiggy-clone",
+  "version": "1.0.0",
+  "description": "swiggy clone using reactjs and tailwind",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuvisdev/swiggy-clone.git"
+  },
+  "keywords": [
+    "react",
+    "tailwind"
+  ],
+  "author": "yuvistwt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuvisdev/swiggy-clone/issues"
+  },
+  "homepage": "https://github.com/yuvisdev/swiggy-clone#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}

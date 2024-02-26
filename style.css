@@ -13,7 +13,7 @@ html {
 }
 
 .secondary--heading {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   font-weight: 600;
 }
 
@@ -126,7 +126,6 @@ html {
   color: #fff;
   cursor: pointer;
   transition: all 0.4s;
-  /* border-radius: 0 100px 100px 0; */
   margin-left: -1px;
 }
 
@@ -228,21 +227,22 @@ html {
 }
 
 .rating-icon {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
   padding: 0.25rem;
   color: #fff;
+  fill: #fff;
   background-color: #2b8a3e;
   border-radius: 50%;
 }
 
 .rating-num {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
 .restrau-time {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 500;
 }
 
