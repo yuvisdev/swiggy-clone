@@ -59,9 +59,16 @@
 
 PAGE LOAD -> RENDER asap -> API CALL -> RE-RENDER APP W/ DATA
 
-23. there are 2 types of routing=>
+23. Monolith Architecture vs Microservcie Architecture
+
+- Monolith Architecture : [[[api] , [ui], [auth], [db]]] -> all things at one place
+- Microservcie Architecture : [api] [ui] [auth] [db] -> they are separate and talk to each other
+
+24. there are 2 types of routing=>
     1.client side routing => react ( all code already present when we load it ,it just load this time)
     2.server side routing => html js vanilla (you make a call and page is coming from server )
+
+25.
 
 ### HOOKS 🪝 : A NORMAL JS utility FUNCTION
 
@@ -69,7 +76,7 @@ PAGE LOAD -> RENDER asap -> API CALL -> RE-RENDER APP W/ DATA
 
 1. useState() -> It is uused to generate superpowerful variables ( Local state varibale )
    let a; -> normal varibale
-   let [currentState, updatedState] = useState(default_value); -> useState() returns array and we destruct it write from start, as soon as state variable updates react re-renders the whole componenet not just that particular thing.
+   let [currentState, updatedState] = useState(default_value); -> useState() returns array and we destruct it write from start, as soon as state variable updates/changes react triggers reconsilation cycle (re-renders the whole that componenet) ( update khali wo element hoga but render pura component )
 
 - AS SOON AS DATA DIFFERS IT WILL RE-RENDER THE UI bcos of this state variable
 
@@ -79,7 +86,7 @@ PAGE LOAD -> RENDER asap -> API CALL -> RE-RENDER APP W/ DATA
 
 - useEffect(()=>{
 
-}) -> this will be call callback every time it renders the whole component
+}) -> this will be call callback every time it renders the any part of component ( on every component render )
 
 - useEffect(()=>{
 
@@ -87,7 +94,7 @@ PAGE LOAD -> RENDER asap -> API CALL -> RE-RENDER APP W/ DATA
 
 - useEffect(()=>{
 
-}, [stateVaribale]) -> this will be called only when that particular componnet state changes
+}, [stateVaribale]) -> this will be called only when that particular componenet state changes
 
 ## WHY react is so fast??
 

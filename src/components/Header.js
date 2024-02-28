@@ -1,5 +1,9 @@
 import { LOGO_URL } from "../../utils/constants";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 let Header = () => {
+  let [initalText, setText] = useState("login");
   return (
     <div className="header">
       <div className="logo">
@@ -10,17 +14,25 @@ let Header = () => {
       </div>
       <ul className="nav-items">
         <li>
-          <a href="">Home</a>
+          <Link to="/home">Home</Link>
         </li>
         <li>
-          <a href="">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <a href="">Contact</a>
+          <Link to="/contact">Contact</Link>
         </li>
         <li>
-          <a href="">Cart</a>
+          <Link to="#">Cart</Link>
         </li>
+        <button
+          className="btn login-btn"
+          onClick={() => {
+            initalText == "login" ? setText("logout") : setText("login");
+          }}
+        >
+          {initalText}
+        </button>
       </ul>
     </div>
   );

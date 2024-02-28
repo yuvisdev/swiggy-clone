@@ -1,27 +1,68 @@
-import { useState } from "react";
-import restList from "../../utils/mockdata";
+import { useState, useEffect } from "react";
+// import restList from "../../utils/mockdata";
 import RestrauCard from "./RestrauCard";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 let Body = () => {
-  let [inRestList, setRestList] = useState(restList);
+  let [inRestList, setRestList] = useState([]);
+  let [filRestList, SetFilsetRestList] = useState([]);
+
+  async function fetchRestrau() {
+    let res = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    let data = await res.json();
+    let restrauList =
+      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
+    setRestList(restrauList);
+    SetFilsetRestList(restrauList);
+  }
+
+  let [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    fetchRestrau();
+  }, []);
 
   // Top rated filter logic
   let TopRated = () => {
-    let filterArr = restList.filter((ele) => {
-      return ele?.info?.avgRating > 4.5;
+    let filterArr = filRestList.filter((ele) => {
+      return ele?.info?.avgRating > 4.4;
     });
-    setRestList(filterArr);
+    SetFilsetRestList(filterArr);
   };
 
-  return (
+  // conditional rendering
+  return inRestList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="container">
       <div className="search-container ">
         <input
           type="text"
           className="input-form"
           placeholder="search your cravings..."
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
         />
-        <button className="input-btn">Search</button>
+        <button
+          className="input-btn"
+          onClick={() => {
+            // searching logic
+            let arr = inRestList.filter((ele) => {
+              return ele.info.name
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+            });
+            SetFilsetRestList(arr);
+          }}
+        >
+          Search
+        </button>
       </div>
 
       <div className="restrau-container">
@@ -37,8 +78,12 @@ let Body = () => {
         </div>
 
         <div className="restrau-cards">
-          {inRestList.map((ele) => {
-            return <RestrauCard key={ele.info.id} restData={ele} />;
+          {filRestList.map((ele) => {
+            return (
+              <Link key={ele.info.id} to={"/restraunts/" + ele.info.id}>
+                <RestrauCard restData={ele} />{" "}
+              </Link>
+            );
           })}
         </div>
       </div>
@@ -47,3 +92,5 @@ let Body = () => {
 };
 
 export default Body;
+
+// on every key press in searchText the whole body componnet is getting re-render as state varibale is changing its value on each keypress

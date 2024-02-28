@@ -9,6 +9,10 @@ let RestrauCard = (prop) => {
     sla: { deliveryTime },
     areaName,
   } = prop?.restData?.info;
+
+  const arr = cuisines.slice(0, 2);
+  const displayCuisines = cuisines.length > 2 ? [...arr, "..."] : arr;
+
   return (
     <div className="restrau-card">
       <img src={CDN_LINK + cloudinaryImageId} className="restrau-card--img" />
@@ -35,7 +39,7 @@ let RestrauCard = (prop) => {
           <p className="restrau-time"> &#x2022; {deliveryTime} mins</p>
         </div>
 
-        <p className="cuisines">{cuisines.join(", ")}</p>
+        <p className="cuisines">{displayCuisines.join(", ")}</p>
         <p className="address">{areaName}</p>
       </div>
     </div>
