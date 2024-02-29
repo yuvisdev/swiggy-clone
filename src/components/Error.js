@@ -1,11 +1,14 @@
 import { useRouteError } from "react-router-dom";
 
 function Error() {
-  let error = useRouteError();
+  let data = useRouteError();
+  console.log(data);
+
   return (
-    <div>
-      <h1>Oops!! Something went wrong</h1>
-      <h2>{error.status}</h2>
+    <div className="container">
+      <h1>Ooops!! Something went wrong</h1>
+      <h2>{data.status}</h2>
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdW9zdWZwd212YWg0ajE5NXhibDMwdXFmcWpsaTlsMTM5dXg5OXowNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C21GGDOpKT6Z4VuXyn/giphy.gif" />
     </div>
   );
 }
