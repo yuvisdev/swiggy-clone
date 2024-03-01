@@ -45,4 +45,19 @@ let RestrauCard = (prop) => {
     </div>
   );
 };
+
+// Returning new Component
+export let ourFav = (RestrauCard) => {
+  return (prop) => {
+    return (
+      <div className="relative">
+        <label className="absolute text-white bg-slate-700 rounded-md px-2 py-1  top-[-12px] text-lg ">
+          Recommended
+        </label>
+        <RestrauCard {...prop} />
+      </div>
+    );
+  };
+};
+
 export default RestrauCard;

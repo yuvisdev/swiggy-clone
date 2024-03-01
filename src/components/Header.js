@@ -21,8 +21,11 @@ let Header = () => {
         <li>
           <Link to="/about">About</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/contact">Contact</Link>
+        </li> */}
+        <li>
+          <Link to="/groccery">Groccery</Link>
         </li>
         <li>
           <Link to="#">Cart</Link>

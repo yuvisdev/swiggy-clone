@@ -68,7 +68,9 @@ PAGE LOAD -> RENDER asap -> API CALL -> RE-RENDER APP W/ DATA
     1.client side routing => react ( all code already present when we load it ,it just load this time)
     2.server side routing => html js vanilla (you make a call and page is coming from server )
 
-25.
+25. we do this code spliting / lazy loading / chunckling to reduce our bunlde size and makes the app fast
+
+26. HigherOrderComponent is a Component that takes a component and returns a component :it takes existing component and returns the enhanced
 
 ### HOOKS 🪝 : A NORMAL JS utility FUNCTION
 

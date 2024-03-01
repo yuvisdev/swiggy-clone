@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import restList from "../../utils/mockdata";
-import RestrauCard from "./RestrauCard";
+import RestrauCard, { ourFav } from "./RestrauCard";
 import Shimmer from "./Shimmer";
 import useStatus from "../utils/useStatus";
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import Offline from "./Offline";
 let Body = () => {
   let [inRestList, setRestList] = useState([]);
   let [filRestList, SetFilsetRestList] = useState([]);
+  let [searchText, setSearchText] = useState("");
 
   async function fetchRestrau() {
     let res = await fetch(
@@ -22,8 +23,6 @@ let Body = () => {
     SetFilsetRestList(restrauList);
   }
 
-  let [searchText, setSearchText] = useState("");
-
   useEffect(() => {
     fetchRestrau();
   }, []);
@@ -31,10 +30,13 @@ let Body = () => {
   let statusData = useStatus();
   if (statusData === false) return <Offline />;
 
+  // recommended Restraunt generating via HigherOrderFuntion
+  let BestSeller = ourFav(RestrauCard);
+
   // Top rated filter logic
   let TopRated = () => {
     let filterArr = filRestList.filter((ele) => {
-      return ele?.info?.avgRating > 4.4;
+      return ele?.info?.avgRating >= 4.4;
     });
     SetFilsetRestList(filterArr);
   };
@@ -86,7 +88,11 @@ let Body = () => {
           {filRestList.map((ele) => {
             return (
               <Link key={ele.info.id} to={"/restraunts/" + ele.info.id}>
-                <RestrauCard restData={ele} />{" "}
+                {ele?.info?.avgRating >= 4.5 ? (
+                  <BestSeller restData={ele} />
+                ) : (
+                  <RestrauCard restData={ele} />
+                )}
               </Link>
             );
           })}
