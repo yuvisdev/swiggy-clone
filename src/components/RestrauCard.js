@@ -1,4 +1,4 @@
-import { CDN_LINK } from "../../utils/constants";
+import { CDN_LINK } from "../utils/constants";
 
 let RestrauCard = (prop) => {
   const {

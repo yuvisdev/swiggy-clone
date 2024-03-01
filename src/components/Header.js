@@ -1,6 +1,7 @@
-import { LOGO_URL } from "../../utils/constants";
+import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useStatus from "../utils/useStatus";
 
 let Header = () => {
   let [initalText, setText] = useState("login");
@@ -13,6 +14,7 @@ let Header = () => {
         </h1>
       </div>
       <ul className="nav-items">
+        <li className="status">{useStatus() ? "✅" : "❌"}</li>
         <li>
           <Link to="/home">Home</Link>
         </li>

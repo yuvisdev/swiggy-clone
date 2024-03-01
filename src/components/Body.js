@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 // import restList from "../../utils/mockdata";
 import RestrauCard from "./RestrauCard";
 import Shimmer from "./Shimmer";
+import useStatus from "../utils/useStatus";
 import { Link } from "react-router-dom";
+import Offline from "./Offline";
 
 let Body = () => {
   let [inRestList, setRestList] = useState([]);
@@ -25,6 +27,9 @@ let Body = () => {
   useEffect(() => {
     fetchRestrau();
   }, []);
+
+  let statusData = useStatus();
+  if (statusData === false) return <Offline />;
 
   // Top rated filter logic
   let TopRated = () => {

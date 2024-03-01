@@ -17,6 +17,13 @@ html {
   font-weight: 600;
 }
 
+.status {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: #333;
+  font-weight: 500;
+}
+
 /* Header Component */
 .header {
   background-color: #fff;
